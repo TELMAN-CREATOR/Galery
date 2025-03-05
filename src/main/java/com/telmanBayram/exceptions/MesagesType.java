@@ -6,12 +6,14 @@ import lombok.Getter;
 public enum MesagesType {
 
 	NO_RECOR_EXİST("1004","KAYIT BULUNAMADI"),
+	TOKEN_IS_EXPIRED("1005","Tokenin süresi dolmuş"),
 	GENERAL_EXCEPTİON("9999","GENEL BİR HATA OLUŞTU");
 
+	private String message;
 	
 	private String code;
 	
-	private String message;
+	
 	
 	
 	MesagesType(String code, String message) {

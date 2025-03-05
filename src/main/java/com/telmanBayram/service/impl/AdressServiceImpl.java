@@ -12,6 +12,6 @@ import com.telmanBayram.service.IAdressService;
 public class AdressServiceImpl implements IAdressService {
 
 	public void test() {
-		throw new BaseException(new ErrorMessage(null,MesagesType.NO_RECOR_EXİST));
+		throw new BaseException(new ErrorMessage(MesagesType.GENERAL_EXCEPTİON, null));
 	}
 }

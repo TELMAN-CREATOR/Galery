@@ -14,10 +14,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ErrorMessage {
+	
+	private MesagesType mesagesType;
 
 	private String ofstatic;
 	
-	private MesagesType mesagesType;
+	
 	
 	public String prepareErrorMessage() {
 		StringBuilder builder=new StringBuilder();
