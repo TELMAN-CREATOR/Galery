@@ -1,7 +1,5 @@
 package com.telmanBayram.jwt;
 
-import java.awt.TrayIcon.MessageType;
-import java.beans.PropertyChangeListenerProxy;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
