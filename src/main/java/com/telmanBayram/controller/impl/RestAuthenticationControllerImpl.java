@@ -10,6 +10,7 @@ import com.telmanBayram.controller.IRestAuthenticationController;
 import com.telmanBayram.controller.RestBaseController;
 import com.telmanBayram.controller.RootEntity;
 import com.telmanBayram.dto.AuthRequest;
+import com.telmanBayram.dto.AuthResponse;
 import com.telmanBayram.dto.DtoUser;
 import com.telmanBayram.service.IAuthenticateService;
 
@@ -26,6 +27,13 @@ public class RestAuthenticationControllerImpl extends RestBaseController impleme
 	public RootEntity<DtoUser> register(@Valid @RequestBody AuthRequest input) {
 		
 		return ok(authenticateService.register(input));
+	}
+
+	@PostMapping("/authenticate")
+	@Override
+	public RootEntity<AuthResponse> authenticate(@Valid @RequestBody AuthRequest input) {
+		
+		return ok(authenticateService.authenticate(input));
 	}
 
 }
