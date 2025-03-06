@@ -10,6 +10,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.telmanBayram.handler.AuthEntryPoint;
 import com.telmanBayram.jwt.JwtAuthenticationFilter;
 
 @Configuration
@@ -26,6 +27,9 @@ public class SecurityConfig {
 	@Autowired
 	private AuthenticationProvider authenticationProvider;
 	
+	@Autowired
+	private AuthEntryPoint authEntryPoint;
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
@@ -33,10 +37,10 @@ public class SecurityConfig {
 		.authorizeHttpRequests(request->request.requestMatchers(REGISTER, AUTHENTICATE ,REFRESH_TOKEN).permitAll()
 				.anyRequest()
 				.authenticated())
+				.exceptionHandling(exception->exception.authenticationEntryPoint(authEntryPoint))
 		        .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 		        .authenticationProvider(authenticationProvider)
 		        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-		        
 		        
 		         return  http.build();
 		
