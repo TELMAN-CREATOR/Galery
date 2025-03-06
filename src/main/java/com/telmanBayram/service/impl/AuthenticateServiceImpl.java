@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.telmanBayram.dto.AuthRequest;
 import com.telmanBayram.dto.AuthResponse;
 import com.telmanBayram.dto.DtoUser;
+import com.telmanBayram.dto.RefreshTokenRequest;
 import com.telmanBayram.exceptions.BaseException;
 import com.telmanBayram.exceptions.ErrorMessage;
 import com.telmanBayram.exceptions.MesagesType;
@@ -99,6 +100,29 @@ public class AuthenticateServiceImpl implements IAuthenticateService{
 			throw new BaseException(new ErrorMessage(MesagesType.USERNAME_OR_PASSWORD_INVALID, e.getMessage()));
 		}
 
+	}
+	
+	public boolean isValidRefreshToken(Date expireDate) {
+	
+		return new Date().before(expireDate);
+	}
+
+	@Override
+	public AuthResponse refreshToken(RefreshTokenRequest input) {
+		Optional<RefreshToken> optional = refreshTokenRepository.findByRefreshToken(input.getRefreshToken());
+		if (optional.isEmpty()) {
+			throw new BaseException(new ErrorMessage(MesagesType.REFRESH_TOKEN_NOT_EXIST, input.getRefreshToken()));
+		}
+		if (!isValidRefreshToken(optional.get().getExpireDate())) {
+			throw new BaseException(new ErrorMessage(MesagesType.REFRESH_TOKEN_IS_EXPIRED, input.getRefreshToken()));
+		}
+		User user = optional.get().getUser();
+		
+		String newtoken = jwtService.generateToken(user);
+		
+		RefreshToken savedRefreshToken = refreshTokenRepository.save(creteRefreshToken(user));
+		
+		return new AuthResponse(newtoken, savedRefreshToken.getRefreshToken());
 	}
 
 	

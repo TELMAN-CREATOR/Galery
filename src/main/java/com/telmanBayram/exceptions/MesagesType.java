@@ -9,6 +9,8 @@ public enum MesagesType {
 	USERNAME_NOT_FOUND("1006","Kullanıcı bulunmadı"),
 	USERNAME_OR_PASSWORD_INVALID("1007","Kullanıcı adı ve ya şifre hatalı"),
 	TOKEN_IS_EXPIRED("1005","Tokenin süresi dolmuş"),
+	REFRESH_TOKEN_NOT_EXIST("1008","Refresh token bulunamadı"),
+	REFRESH_TOKEN_IS_EXPIRED("1009","Refresh tokenin süresi dolmuş"),
 	GENERAL_EXCEPTİON("9999","GENEL BİR HATA OLUŞTU");
 
 	private String message;
