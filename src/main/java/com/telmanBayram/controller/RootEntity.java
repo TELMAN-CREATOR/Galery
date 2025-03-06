@@ -32,7 +32,7 @@ public class RootEntity <T>{
 		RootEntity<T> rootEntity=new RootEntity<>();
 		
 		rootEntity.setErrorMessage(errorMessage);
-		rootEntity.setStatus(500);
+		rootEntity.setStatus(400);
 		rootEntity.setPayload(null);
 		
 		return rootEntity;

@@ -70,7 +70,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 		catch (Exception e) {
 			throw new BaseException(new ErrorMessage(MesagesType.GENERAL_EXCEPTİON, e.getMessage()));
 		}
-		
+		filterChain.doFilter(request, response);
 		
 	}
 
