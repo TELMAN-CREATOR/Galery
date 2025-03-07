@@ -2,6 +2,8 @@ package com.telmanBayram.dto;
 
 
 
+
+
 import java.util.Date;
 
 import lombok.Getter;
