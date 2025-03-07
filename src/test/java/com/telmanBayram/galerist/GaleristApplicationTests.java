@@ -8,6 +8,7 @@ class GaleristApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }
