@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class DtoGaleristIU {
 	@NotNull
     private String firstName;
