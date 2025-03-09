@@ -1,6 +1,8 @@
 package com.telmanBayram.handler;
 
-import java.sql.Date;
+
+
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
